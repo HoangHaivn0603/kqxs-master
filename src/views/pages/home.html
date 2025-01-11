@@ -1,0 +1,26 @@
+{% extends "../layout/layout.html" %}
+{% set title="a title"%}
+
+{% block body %}
+  {% set a = 1 + 2 %}
+
+  <h1>a heading {{ a }}</h1>
+  <ul>
+    {% for item in arr %}
+    <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
+
+  {% if result %}
+  <div>
+    <div>
+      <b>DB:</b> {{ result.db }}
+    </div>
+    <div>
+      <b>Giai nhat:</b> {{ result.g1 }}
+    </div>
+  </div>
+  {% else %}
+  <div>khong co du lieu</div>
+  {% endif %}
+{% endblock %}
