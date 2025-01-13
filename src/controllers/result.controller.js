@@ -31,7 +31,7 @@ async function getResult(req, res) {
 
 
 async function batchImportResults(req, res) {
-  const fromDateStr = req.query.fromDate || moment().subtract(100, 'days').format('YYYY-MM-DD');
+  const fromDateStr = req.query.fromDate || moment().subtract(365, 'days').format('YYYY-MM-DD');
   const toDateStr = req.query.toDate || moment().format('YYYY-MM-DD');
 
   const reports = await lotteryService.batchImport(fromDateStr, toDateStr)
@@ -42,7 +42,7 @@ async function batchImportResults(req, res) {
 };
 
 async function getTest(req, res) {
-  const fromDateStr = req.query.fromDate || moment().subtract(100, 'days').format('YYYY-MM-DD');
+  const fromDateStr = req.query.fromDate || moment().subtract(365, 'days').format('YYYY-MM-DD');
   const toDateStr = req.query.toDate || moment().format('YYYY-MM-DD');
 
   const results = await resultService.getResultsFromDateToDate(fromDateStr, toDateStr);
@@ -96,7 +96,7 @@ async function getTest(req, res) {
         continue;
       }
 
-      const tail = value.substr(value.length - 2, 2);
+      const tail = value.slice(-2); // fix chỗ này
 
       const item = obj[tail];
 
@@ -126,7 +126,7 @@ async function getTest(req, res) {
 };
 
 async function getResults(req, res) {
-  const fromDateStr = req.query.fromDate || moment().subtract(100, 'days').format('YYYY-MM-DD');
+  const fromDateStr = req.query.fromDate || moment().subtract(365, 'days').format('YYYY-MM-DD');
   const toDateStr = req.query.toDate || moment().format('YYYY-MM-DD');
 
 
